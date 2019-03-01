@@ -269,6 +269,9 @@ function frame() {
         r = [Math.min(c.width,c.height)/25.6,Math.min(c.width,c.height)/17,Math.min(c.width,c.height)/12.8];
         logosize = Math.min(c.width,c.height)/22;
         //-=-//
+        if(!loading)
+        ctx.fillStyle="rgba(0,0,0,.4)";
+        ctx.fillRect(0,0,innerWidth,innerHeight);
         var datta = data;
         if(data===undefined) datta = new Array(bars).fill(0);
         var len = datta.length;
