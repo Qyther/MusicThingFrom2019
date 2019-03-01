@@ -160,7 +160,7 @@ function handlealbumswitch(a) {
 var flakes = [];
 function genFlake() {
   if(op>0)
-  flakes.push([innerWidth/2+(Math.random()*Math.min(innerWidth,innerHeight)-Math.min(innerWidth,innerHeight)/2),-flakesize,Math.random()*6,Math.random()*(Math.PI*2)-Math.PI]);
+  flakes.push([innerWidth/2+(Math.random()*Math.min(c.width,c.height)-Math.min(c.width,c.height)/2),-flakesize,Math.random()*6,Math.random()*(Math.PI*2)-Math.PI]);
 }
 function gdis(a,b) {
   return Math.sqrt(Math.pow(a[0]-b[0],2)+Math.pow(a[1]-b[1],2));
@@ -243,7 +243,7 @@ function frame() {
   c=document.querySelector("canvas");
   c.width=innerWidth;
   c.style.top = "calc(36.5vw - "+ document.documentElement.scrollTop +"px)";
-  c.height=innerWidth*1.4;
+  c.height=innerWidth/10*8;
   c.style.opacity = op;
   ctx=c.getContext("2d");
   var now = Date.now();
@@ -267,13 +267,13 @@ function frame() {
         flakesize = Math.min(c.width,c.height)/160;
         perspective = flakesize/6.2;
         r = [Math.min(c.width,c.height)/25.6,Math.min(c.width,c.height)/17,Math.min(c.width,c.height)/12.8];
-        logosize = Math.min(innerWidth,innerHeight)/22;
+        logosize = Math.min(c.width,c.height)/22;
         //-=-//
         var datta = data;
         if(data===undefined) datta = new Array(bars).fill(0);
         var len = datta.length;
-        var h = innerHeight / len;
-        var x = innerWidth - 1;
+        var h = c.height / len;
+        var x = c.width - 1;
         if(data!==undefined) analyser.getByteFrequencyData(data);
         var av = 0;
         for(var i=0;i<bars;i++) { 
@@ -291,7 +291,7 @@ function frame() {
             genFlake();
           }
         }
-        ctx.translate(innerWidth/2,innerHeight/2);
+        ctx.translate(c.width/2,c.height/2);
         var ads = [];
         ctx.strokeStyle="blue";
         for(var j=0;j<r.length;j++) {
@@ -325,8 +325,8 @@ function frame() {
         ctx.fillStyle="black";
         ctx.strokeStyle="black";
         for(var i=0;i<flakes.length;i++) {
-          var angle = Math.atan2(flakes[i][1]-innerHeight/2,flakes[i][0]-innerWidth/2);
-          var dist = 1-gdis(flakes[i],[innerWidth/2,innerHeight/2])/pushdistance;
+          var angle = Math.atan2(flakes[i][1]-c.height/2,flakes[i][0]-c.width/2);
+          var dist = 1-gdis(flakes[i],[c.width/2,c.height/2])/pushdistance;
           if(dist<0) dist = 0;
           var offset = [
             Math.cos(angle)*av*pushpower*dist*pushmult,
@@ -350,10 +350,10 @@ function frame() {
           flakes[i][1]+=fallspeed*average;
           flakes[i][3]+=swingspeed*average;
           flakes[i][0]+=Math.cos(flakes[i][3])/(1/movespeed+flakes[i][2]*perspectivespeed)*average;
-          if(flakes[i][1]>innerHeight+(flakesize-flakes[i][2]*perspective)) flakes.splice(i,1);
+          if(flakes[i][1]>c.height+(flakesize-flakes[i][2]*perspective)) flakes.splice(i,1);
         }
-        ctx.translate(innerWidth/2,innerHeight/2);
-        ctx.lineWidth = innerWidth/160;
+        ctx.translate(c.width/2,c.height/2);
+        ctx.lineWidth = c.width/160;
         for(var i=0;i<rings.length;i++) {
           ctx.beginPath();
           ctx.strokeStyle="rgba(46,234,249,"+(1-rings[i]/ringmaxdistance)+")";
@@ -367,13 +367,12 @@ function frame() {
         last=now;
         if(loading) {
           ctx.fillStyle="rgba(0,0,0,.6)";
-          ctx.fillRect(-innerWidth/2,-innerHeight/2,innerWidth,innerHeight);
+          ctx.fillRect(-c.width/2,-c.height/2,c.width,c.height);
           ctx.fillStyle="white";
-          ctx.font=Math.min(innerWidth,innerHeight)/10+"px monospace";
-          ctx.textAlign="center";
+          ctx.font=c.width/18+"px monospace";
           les+=delta;
           if(les>=150*4) les = 0;
-          ctx.fillText("Loading"+new Array(Math.ceil(les/150)).join("."),0,innerHeight/2-Math.min(innerWidth,innerHeight)/30);
+          ctx.fillText("Loading"+new Array(Math.ceil(les/150)).join("."),-innerWidth/2,c.height/2-c.width/30);
         } else les = 0;
       }
 
