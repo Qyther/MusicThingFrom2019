@@ -241,11 +241,11 @@ function playSong(a) {
     {
       blob = xhr.response;//xhr.response is now a blob object
       var myReader = new FileReader();
-      myReader.readAsArrayBuffer(blob)
+      myReader.readAsDataURL(blob)
       myReader.addEventListener("loadend", function(e)
       {
-        var buffer = e.srcElement.result;//arraybuffer object
-        console.log(buffer);
+        var buffer = e.target.result;//arraybuffer object
+        playsong(buffer);
       });
     }
     xhr.send();
