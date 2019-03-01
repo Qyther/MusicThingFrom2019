@@ -239,7 +239,6 @@ function process(stream) {
       var les = 0;
       var last;
 var loading = false;
-var start = true;
 function frame() {
   c=document.querySelector("canvas");
   c.width=innerWidth;
@@ -259,12 +258,6 @@ function frame() {
           return;
         }
         var now = Date.now();
-        if(start) {
-          start = false;
-          c.addEventListener("mousedown",()=>{
-            playUnformattedSong("./bg.mp3");
-          });
-        }
         flakedelay = delta*3;
         spawndenum = flakedelay*spawnaspect;
         des+=delta;
