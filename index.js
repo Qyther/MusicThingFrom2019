@@ -151,7 +151,7 @@ function frame() {
         } 
         ctx.rotate(logorotation);
         var img = new Image();
-        img.src="http://icons.iconarchive.com/icons/martz90/circle/256/music-icon.png";
+        img.src="./musicicon.png";
         ctx.drawImage(img,-(logosize+av/15)/2,-(logosize+av/15)/2,logosize+av/15,logosize+av/15);
         logorotation+=av/10000;
         ctx.resetTransform();
