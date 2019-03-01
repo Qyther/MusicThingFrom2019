@@ -395,14 +395,14 @@ body {
 }
 ::-webkit-scrollbar-track {
   border-radius: 30px;
-  background: #777;
+  background: #0aa5b4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #444; 
+  background: #2eeaf9; 
   border-radius: 30px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333; 
+  background: #1dd9e8; 
 }
 ::-ms-scrollbar {
   width: 8px;
