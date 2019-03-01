@@ -233,6 +233,7 @@ function playSong(a) {
       
       
     });*/
+    document.addEventListener("mousedown",()=>{
     var blob = null;
     var xhr = new XMLHttpRequest(); 
     xhr.open("GET", "./bg.mp3"); 
@@ -250,5 +251,6 @@ function playSong(a) {
       });
     }
     xhr.send();
+  });
   });
 })();
