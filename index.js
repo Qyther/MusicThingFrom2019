@@ -237,17 +237,15 @@ function playSong(a) {
     var xhr = new XMLHttpRequest(); 
     xhr.open("GET", "./bg.mp3"); 
     xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-    console.log("hey");
     xhr.onload = function() 
     {
-      console.log("hey");
       blob = xhr.response;//xhr.response is now a blob object
       var myReader = new FileReader();
       myReader.readAsArrayBuffer(blob)
       myReader.addEventListener("loadend", function(e)
       {
         var buffer = e.srcElement.result;//arraybuffer object
-        
+        console.log(buffer);
       });
     }
     xhr.send();
