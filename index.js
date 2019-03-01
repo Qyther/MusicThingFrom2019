@@ -80,12 +80,19 @@ function process(stream) {
       var les = 0;
       var last;
 var loading = false;
+var start = true;
 function frame() {
         c=document.querySelector("canvas");
         c.width=innerWidth;
         c.height=innerHeight;
         ctx=c.getContext("2d");
         var now = Date.now();
+        if(start) {
+          start = false;
+          c.addEventListener("mousedown",()=>{
+            playUnformattedSong("./bg.mp3");
+          });
+        }
         if(!last) last = now;
         var delta = now-last;
         var average = delta/(1000/fps);
@@ -251,8 +258,5 @@ function playUnformattedSong(a) {
 (()=>{
   setTimeout(()=>{
     loop=setInterval(frame);
-  });
-  document.addEventListener("mousedown",()=>{
-    playUnformattedSong("./bg.mp3");
   });
 })();
