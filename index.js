@@ -218,39 +218,27 @@ function playSong(a) {
   audio.play();
   process(audio);
 }
+function playUnformattedSong(a) {
+  var xhr = new XMLHttpRequest(); 
+  xhr.open("GET", a); 
+  xhr.responseType = "blob";
+  xhr.addEventListener("load",()=>{
+    var blob = xhr.response;
+    var fr = new FileReader();
+    fr.readAsDataURL(blob);
+    fr.addEventListener("loadend",e=>{
+      var base64 = e.target.result;
+      playSong(base64);
+    });
+  });
+  xhr.send();
+}
 
 (()=>{
   setTimeout(()=>{
     loop=setInterval(frame);
   });
-  setTimeout(()=>{
-    /*document.getElementsByClassName("upload")[0].addEventListener("change",()=>{
-      fr = new FileReader();
-      fr.readAsDataURL(document.getElementsByClassName("upload")[0].files[0]);
-      fr.onload=e=>{
-        playSong(e.target.result);
-      };
-      
-      
-    });*/
-    document.addEventListener("mousedown",()=>{
-    var blob = null;
-    var xhr = new XMLHttpRequest(); 
-    xhr.open("GET", "./bg.mp3"); 
-    xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-    xhr.onload = function() 
-    {
-      blob = xhr.response;//xhr.response is now a blob object
-      var myReader = new FileReader();
-      myReader.readAsDataURL(blob)
-      myReader.addEventListener("loadend", function(e)
-      {
-        var buffer = e.target.result;//arraybuffer object
-        console.log(buffer.slice(0,50));
-        playSong(buffer);
-      });
-    }
-    xhr.send();
-  });
+  document.addEventListener("mousedown",()=>{
+    playUnformattedSong("./bg.mp3");
   });
 })();
