@@ -1,12 +1,130 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <link rel="stylesheet" href="./index.css">
-  </head>
-  <body>
-    <canvas></canvas>
-    <input class="upload" accept="audio/*" type="file">
-    <input class="volume" type="range" value=100 min=0 max=100>
-  </body>
+<head>
+  <title>[Xx,..,xX]</title>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="./index.css" rel="stylesheet">
+  <script src="./index.js" type="text/javascript"></script>
+</head>
+<body>
+  <div class="topmenu">
+    <div class="icons">
+      <div class="twittericon"></div>
+      <div class="youtubeicon"></div>
+      <div class="soundcloudicon"></div>
+    </div>
+    <div class="header">
+      <div class="headertitle">[Xx,..,xX]</div>
+    </div>
+  </div>
+  <div class="mainpage">
+    
+  <div class="middlepiece">
+    <div class="backgroundimagemiddlepiece"></div>
+    <div class="armtext1">X</div>
+    <div class="armtext2">X</div>
+    <div class="armtext3">X</div>
+    <div class="attentionpiece">
+      <div class="attentiontitle">NEW SINGLE</div>
+      <div class="attentiondescription">"Smokes"
+        <br>
+        <div class="smallerattentiondescription">Out now!</div>
+        <div class="attentioninformation">Available on: 
+          <div class="spotifyicon"></div>
+          <div class="musicicon"></div>
+          <div class="bandcampicon"></div>
+        </div>
+        </div>
+    </div>
+  </div>
+    
+    <div class="undermiddlepiece">
+      <div class="undermiddlebox">
+        <div class="undermiddleboxdate">23</div>
+        <div class="undermiddleboxmonth">JAN</div>
+        <div class="undermiddleboxdivider"></div>
+        <div class="undermiddleboxcontent">Dongo-Con</div>
+        <div class="undermiddleboxsubcontent">Dallas, TX</div>
+      </div>
+      <div class="undermiddlebox">
+        <div class="undermiddleboxdate">7</div>
+        <div class="undermiddleboxmonth">FEB</div>
+        <div class="undermiddleboxdivider"></div>
+        <div class="undermiddleboxcontent">Academy</div>
+        <div class="undermiddleboxsubcontent">Forgo, ND</div>
+      </div>
+      <div class="undermiddlebox">
+        <div class="undermiddleboxdate">19</div>
+        <div class="undermiddleboxmonth">FEB</div>
+        <div class="undermiddleboxdivider"></div>
+        <div class="undermiddleboxcontent">Muselite Live</div>
+        <div class="undermiddleboxsubcontent">Portland, OR</div>
+      </div>
+      <div class="undermiddlebox">
+        <div class="undermiddleboxdate">21</div>
+        <div class="undermiddleboxmonth">FEB</div>
+        <div class="undermiddleboxdivider"></div>
+        <div class="undermiddleboxcontent">Neon Fest</div>
+        <div class="undermiddleboxsubcontent">Reno, NV</div>
+      </div>
+      <div class="undermiddlebox">
+        <div class="undermiddleboxdate">27</div>
+        <div class="undermiddleboxmonth">FEB</div>
+        <div class="undermiddleboxdivider"></div>
+        <div class="undermiddleboxcontent">Doge Fest</div>
+        <div class="undermiddleboxsubcontent">Doge Land, DG</div>
+      </div>
+    </div>
+    <div class="undermiddleboxunderline"></div>
+    
+    <div class="audiolibrary">
+      <div class="undermiddlebackground"></div>
+      
+      <canvas class="middlecanvas"></canvas>
+      <div class="albumimages">
+        <div class="albumbackground1 albumbackground albumsidebackground"></div>
+        <div class="albumimage1 albumsideimage albumimage"></div>
+        <div class="albumbackground2 albumbackground albumsidebackground"></div>
+        <div class="albumimage2 albumsideimage albumimage"></div>
+        <div class="albumbackground3 albumbackground albummainbackground"></div>
+        <div class="albumimage3 albummainimage albumimage"></div>
+      </div>
+      <div class="albumbuttons">
+        <div class="arrowleft arrow" onclick="handlealbumswitch(-1);"></div>
+        <div class="arrowright arrow" onclick="handlealbumswitch(1);"></div>
+      </div>
+      <div class="albumtitle">[ Album Title 1 ]</div>
+        <ol class="songlist">
+          <li class="song"><span class="firstletter">F</span><span class="otherletters">reezing keys</span>
+            <div class="playbutton audiobutton" onclick="handletrack(0);"></div>
+            <div class="songunderline"></div>
+          </li>
+          <li class="song"><span class="firstletter">N</span><span class="otherletters">itemare (Ft. Frisel)</span>
+            <div class="playbutton audiobutton" onclick="handletrack(1);"></div>
+            <div class="songunderline"></div>
+          </li>
+          <li class="song"><span class="firstletter">B</span><span class="otherletters">linding lights</span>
+            <div class="playbutton audiobutton" onclick="handletrack(2);"></div>
+            <div class="songunderline"></div>
+          </li>
+          <li class="song"><span class="firstletter">T</span><span class="otherletters">eratomas</span>
+            <div class="playbutton audiobutton" onclick="handletrack(3);"></div>
+            <div class="songunderline"></div>
+          </li>
+        </ol>
+      <div class="extrasongs">And 6 more tracks...</div>
+      <div class="buttonflexbox">
+        <div class="spotifybutton flexitem"></div>
+        <div class="googleplaybutton flexitem"></div>
+        <div class="itunesbutton flexitem"></div>
+      </div>
+    </div>
+    
+    <div class="merchandise">
+      <div class="merchandisetitle">_Merchandise_</div>
+    </div>
+    
+  </div>
+ 
+</body>
 </html>
-<script src="./index.js"></script>

@@ -1,3 +1,162 @@
+var albums = [
+  
+  {
+    name: "[ Album Title 1 ]",
+    image: "https://raw.githubusercontent.com/Qyther/weaw/master/Album3.png",
+    songs: [
+      {
+        name: "Freezing keys",
+        link: "./bg.mp3"
+      },
+      {
+        name: "Nitemare (Ft. Frisel)",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Blinding lights",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Teratomas",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      }
+    ]
+  },
+  
+  {
+    name: "[ Album Title 2 ]",
+    image: "https://raw.githubusercontent.com/Qyther/weaw/master/Album2.png",
+    songs: [
+      {
+        name: "Freezingkeys",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Nitemare (F. Frisel)",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Blinding ligts",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Teratoas",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      }
+    ]
+  },
+  
+  {
+    name: "[ Album Title 3 ]",
+    image: "https://raw.githubusercontent.com/Qyther/weaw/master/Album1.png",
+    songs: [
+      {
+        name: "Freezing kes",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Nitemare (Ft. Frise)",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Blinding light",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      },
+      {
+        name: "Tratomas",
+        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+      }
+    ]
+  }
+  
+];
+var currentalbumindex = 0;
+var audio;
+var currentplay;
+var playableSongs = [];
+
+(()=>{
+  setTimeout(()=>{
+    var an = Math.min(albums[currentalbumindex].songs.length,document.getElementsByClassName("song").length);
+    for(var i=0;i<an;i++) {
+      document.getElementsByClassName("firstletter")[i].innerHTML = albums[currentalbumindex].songs[i].name.slice(0,1);
+      document.getElementsByClassName("otherletters")[i].innerHTML = albums[currentalbumindex].songs[i].name.slice(1);
+      playableSongs.push(albums[currentalbumindex].songs[i].link);
+    }
+  });
+})();
+
+function handletrack(a,b) {
+  if(currentplay!==a&&audio) {
+    audio.pause();
+    audio2.pause();
+    audio = undefined;
+    audio2 = undefined;
+    document.getElementsByClassName("audiobutton")[currentplay].className="playbutton audiobutton";
+  }
+  if(currentplay===undefined) currentplay = a;
+  for(var i=0;i<document.getElementsByClassName("audiobutton").length;i++) {
+    document.getElementsByClassName("audiobutton")[i].className="playbutton audiobutton";
+  }
+  if(!audio) {
+    playUnformattedSong(playableSongs[a]);
+    
+    currentplay = a;
+    switchopacity = 1;
+    document.getElementsByClassName("albummainimage")[0].style.boxShadow="0 0 40px 7px #469bab";
+    document.getElementsByClassName("audiobutton")[a].className="pausebutton audiobutton";
+  } else {
+    switchopacity = 0;
+    audio.pause();
+    audio2.pause();
+    audio = undefined;
+    audio2 = undefined;
+    currentplay = undefined;
+    document.getElementsByClassName("albummainimage")[0].style.boxShadow="";
+    document.getElementsByClassName("audiobutton")[a].className="playbutton audiobutton";
+  }
+}
+
+
+function handlealbumswitch(a) {
+  switchopacity = 0;
+  document.getElementsByClassName("albummainimage")[0].style.boxShadow="";
+  if(audio!==undefined) audio.pause();
+  if(audio2!==undefined) audio2.pause();
+  audio = undefined;
+  currentplay = undefined;
+  for(var i=0;i<document.getElementsByClassName("audiobutton").length;i++) {
+    document.getElementsByClassName("audiobutton")[i].className="playbutton audiobutton";
+  }
+  currentalbumindex+=a;
+  if(currentalbumindex<0) currentalbumindex = albums.length-1;
+  if(currentalbumindex>albums.length-1) currentalbumindex = 0;
+  playablesongs = [];
+  for(var i=0;i<document.getElementsByClassName("albumimage").length;i++) {
+    document.getElementsByClassName("albumimage")[i].style.opacity = 0;
+  }
+  setTimeout(()=>{
+    for(var i=0;i<document.getElementsByClassName("albumsideimage").length;i++) {
+      document.getElementsByClassName("albumsideimage")[i].style.opacity = .6;
+    }
+    for(var i=0;i<document.getElementsByClassName("albumimage").length;i++) {
+      var newIndex = i+currentalbumindex;
+      if(newIndex>albums.length-1) newIndex-=albums.length;
+      if(newIndex<0) newIndex+=albums.length-1;
+      var newImage = albums[newIndex].image;
+      document.getElementsByClassName("albumimage")[i].style.backgroundImage = "url("+newImage+")";
+    }
+    document.getElementsByClassName("albummainimage")[0].style.opacity = 1;
+  },850);
+  document.getElementsByClassName("albumtitle")[0].innerHTML = albums[currentalbumindex].name
+  var an = Math.min(albums[currentalbumindex].songs.length,document.getElementsByClassName("song").length);
+  for(var i=0;i<an;i++) {
+    document.getElementsByClassName("firstletter")[i].innerHTML = albums[currentalbumindex].songs[i].name.slice(0,1);
+    document.getElementsByClassName("otherletters")[i].innerHTML = albums[currentalbumindex].songs[i].name.slice(1);
+    playableSongs.push(albums[currentalbumindex].songs[i].link);
+  }
+}
+
 var flakes = [];
 function genFlake() {
   if(op>0)
@@ -12,7 +171,7 @@ var formulas = [
   "size*pow(sin(t),3)",
   "size*cos(t)-size/3*cos(2*t)-size/6*cos(3*t)-cos(4*t)"
 ];
-var op = 1;
+var op = 0;
 var movespeed = .2;
 var swingspeed = .01;
 var fallspeed = .6;
@@ -82,10 +241,23 @@ function process(stream) {
 var loading = false;
 var start = true;
 function frame() {
-        c=document.querySelector("canvas");
-        c.width=innerWidth;
-        c.height=innerHeight;
-        ctx=c.getContext("2d");
+  c=document.querySelector("canvas");
+  c.width=innerWidth;
+  c.style.top = "calc(36.5vw - "+ document.documentElement.scrollTop +"px)";
+  c.height=innerWidth/10*8;
+  c.style.opacity = op;
+  ctx=c.getContext("2d");
+  var now = Date.now();
+  if(!last) last = now;
+  var delta = now-last;
+  var average = delta/(1000/fps);
+  if(op>switchopacity) op-=fadeoutspeed*average;
+  if(op<switchopacity) op+=fadeinspeed*average;
+  if(Math.abs(op)<.05) {
+    last=now;
+    flakes = [];
+          return;
+        }
         var now = Date.now();
         if(start) {
           start = false;
@@ -93,9 +265,6 @@ function frame() {
             playUnformattedSong("./bg.mp3");
           });
         }
-        if(!last) last = now;
-        var delta = now-last;
-        var average = delta/(1000/fps);
         flakedelay = delta*3;
         spawndenum = flakedelay*spawnaspect;
         des+=delta;
@@ -107,10 +276,6 @@ function frame() {
         r = [Math.min(c.width,c.height)/25.6,Math.min(c.width,c.height)/17,Math.min(c.width,c.height)/12.8];
         logosize = Math.min(innerWidth,innerHeight)/22;
         //-=-//
-        if(audio!==undefined)
-        audio.volume = document.getElementsByClassName("volume")[0].value/100;
-        if(audio2!==undefined)
-        audio2.volume = document.getElementsByClassName("volume")[0].value/100;
         var datta = data;
         if(data===undefined) datta = new Array(bars).fill(0);
         var len = datta.length;
