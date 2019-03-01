@@ -5,7 +5,7 @@ var albums = [
     image: "https://raw.githubusercontent.com/Qyther/weaw/master/Album3.png",
     songs: [
       {
-        name: "Imagine Dragons - Believer (Romy Wave Cover)",
+        name: "Imagine Dragons - Believer",
         link: "./bg.mp3"
       },
       {
