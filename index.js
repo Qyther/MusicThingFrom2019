@@ -1,7 +1,7 @@
 var flakes = [];
 function genFlake() {
   if(op>0)
-  flakes.push([Math.random()*Math.min(innerWidth,innerHeight),-flakesize,Math.random()*6,Math.random()*(Math.PI*2)-Math.PI]);
+  flakes.push([innerWidth/2+(Math.random()*Math.min(innerWidth,innerHeight)-Math.min(innerWidth,innerHeight)/2),-flakesize,Math.random()*6,Math.random()*(Math.PI*2)-Math.PI]);
 }
 function gdis(a,b) {
   return Math.sqrt(Math.pow(a[0]-b[0],2)+Math.pow(a[1]-b[1],2));
