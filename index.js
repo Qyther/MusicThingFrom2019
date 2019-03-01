@@ -252,11 +252,7 @@ function frame() {
   var average = delta/(1000/fps);
   if(op>switchopacity) op-=fadeoutspeed*average;
   if(op<switchopacity) op+=fadeinspeed*average;
-  if(Math.abs(op)<.05) {
-    last=now;
-    flakes = [];
-          return;
-        }
+  if(Math.abs(op)<.05) return;
         var now = Date.now();
         flakedelay = delta*3;
         spawndenum = flakedelay*spawnaspect;
@@ -383,6 +379,7 @@ function frame() {
 function playSong(a) {
   loading = true;
   flakes = [];
+  logorotation = 0;
   colorarray = new Array(bars).fill(colors[0]);
       if(audio) {
         audio.pause();
