@@ -1,0 +1,16 @@
+canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: black;
+}
+.upload {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.volume {
+  position: fixed;
+  left: 0;
+  top: 22px;
+}
