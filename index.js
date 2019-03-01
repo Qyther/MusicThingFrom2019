@@ -1,24 +1,24 @@
 var albums = [
   
   {
-    name: "[ Album Title 1 ]",
+    name: "[ Favorites ]",
     image: "https://raw.githubusercontent.com/Qyther/weaw/master/Album3.png",
     songs: [
       {
-        name: "Freezing keys",
+        name: "Imagine Dragons - Believer (Romy Wave Cover)",
         link: "./bg.mp3"
       },
       {
-        name: "Nitemare (Ft. Frisel)",
-        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+        name: "Patsanskaya",
+        link: "./bg1.mp3"
       },
       {
-        name: "Blinding lights",
-        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+        name: "Inova - Isolation",
+        link: "./bg2.mp3"
       },
       {
-        name: "Teratomas",
-        link: "http://dehdyoutubers.paperplane.io/bg.mp3"
+        name: "AJR - I'm Ready",
+        link: "./bg3.mp3"
       }
     ]
   },
