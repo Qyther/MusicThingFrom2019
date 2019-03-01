@@ -73,11 +73,13 @@ function process(stream) {
   var source = actx.createMediaElementSource(stream);
   source.connect(analyser);
   data = new Uint8Array(analyser.frequencyBinCount);
+  loading = false;
 }
       var des = 0;
       var mes = 0;
+      var les = 0;
       var last;
-
+var loading = false;
 function frame() {
         c=document.querySelector("canvas");
         c.width=innerWidth;
@@ -198,9 +200,20 @@ function frame() {
         }
         if(logorotation>Math.PI*2) logorotation-=Math.PI*2;
         last=now;
+        if(loading) {
+          ctx.fillStyle="rgba(0,0,0,.6)";
+          ctx.fillRect(-innerWidth/2,-innerHeight/2,innerWidth,innerHeight);
+          ctx.fillStyle="white";
+          ctx.font=Math.min(innerWidth,innerHeight)/10+"px monospace";
+          ctx.textAlign="center";
+          les+=delta;
+          if(les>=4000) les = 0;
+          ctx.fillText("Loading"+new Array(Math.ceil(les/1000)).join("."),0,innerHeight/2-Math.min(innerWidth,innerHeight)/30);
+        } else les = 0;
       }
 
 function playSong(a) {
+  loading = true;
   flakes = [];
   colorarray = new Array(bars).fill(colors[0]);
       if(audio) {
@@ -219,6 +232,7 @@ function playSong(a) {
   process(audio);
 }
 function playUnformattedSong(a) {
+  loading = true;
   var xhr = new XMLHttpRequest(); 
   xhr.open("GET", a); 
   xhr.responseType = "blob";
