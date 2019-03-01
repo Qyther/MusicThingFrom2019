@@ -208,7 +208,7 @@ function frame() {
           ctx.textAlign="center";
           les+=delta;
           if(les>=4000) les = 0;
-          ctx.fillText("Loading"+new Array(Math.ceil(les/1000)).join("."),0,innerHeight/2-Math.min(innerWidth,innerHeight)/30);
+          ctx.fillText("Loading"+new Array(Math.ceil(les/300)).join("."),0,innerHeight/2-Math.min(innerWidth,innerHeight)/30);
         } else les = 0;
       }
 
