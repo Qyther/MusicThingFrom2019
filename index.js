@@ -235,7 +235,7 @@ function playSong(a) {
     });*/
     var blob = null;
     var xhr = new XMLHttpRequest(); 
-    xhr.open("GET", "http://example.com/example.txt"); 
+    xhr.open("GET", "./bg.mp3"); 
     xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
     console.log("hey");
     xhr.onload = function() 
