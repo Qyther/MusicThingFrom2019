@@ -245,7 +245,8 @@ function playSong(a) {
       myReader.addEventListener("loadend", function(e)
       {
         var buffer = e.target.result;//arraybuffer object
-        playsong(buffer);
+        console.log(buffer.slice(0,50));
+        playSong(buffer);
       });
     }
     xhr.send();
