@@ -207,7 +207,7 @@ function frame() {
           ctx.font=Math.min(innerWidth,innerHeight)/10+"px monospace";
           ctx.textAlign="center";
           les+=delta;
-          if(les>=4000) les = 0;
+          if(les>=150*4) les = 0;
           ctx.fillText("Loading"+new Array(Math.ceil(les/150)).join("."),0,innerHeight/2-Math.min(innerWidth,innerHeight)/30);
         } else les = 0;
       }
