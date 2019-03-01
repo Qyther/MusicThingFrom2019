@@ -83,6 +83,7 @@ var playableSongs = [];
       document.getElementsByClassName("otherletters")[i].innerHTML = albums[currentalbumindex].songs[i].name.slice(1);
       playableSongs.push(albums[currentalbumindex].songs[i].link);
     }
+    document.getElementsByClassName("albumtitle")[0].innerHTML = abums[currentalbumindex].name;
   });
 })();
 
