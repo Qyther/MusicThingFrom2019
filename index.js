@@ -271,7 +271,7 @@ function frame() {
         //-=-//
         if(!loading)
         ctx.fillStyle="rgba(0,0,0,.4)";
-        ctx.fillRect(0,0,innerWidth,innerHeight);
+        ctx.fillRect(0,0,c.width,c.height);
         var datta = data;
         if(data===undefined) datta = new Array(bars).fill(0);
         var len = datta.length;
