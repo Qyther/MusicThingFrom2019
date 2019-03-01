@@ -242,7 +242,6 @@ var loading = false;
 function frame() {
   c=document.querySelector("canvas");
   c.width=innerWidth;
-  c.style.top = "calc(36.5vw - "+ document.documentElement.scrollTop +"px)";
   c.height=innerWidth/10*8;
   c.style.opacity = op;
   ctx=c.getContext("2d");

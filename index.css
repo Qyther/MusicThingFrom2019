@@ -13,6 +13,7 @@
 body {
   background: black;
   margin: 0;
+  overflow-x: hidden;
 }
 .twittericon, .youtubeicon, .soundcloudicon {
   width: 2vw;
@@ -384,8 +385,8 @@ body {
   background-image: url(https://raw.githubusercontent.com/Qyther/weaw/master/Available%20on%20itunes.png);
   margin-left: 3px;
 }
-canvas {
-  position: fixed;
+.middlecanvas {
+  position: absolute;
   left: 0;
   top: 36.5vw;
 }
